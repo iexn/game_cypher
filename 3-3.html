@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            padding: 20px;
+            /* width: 1000px; */
+            height: 400px;
+            background-color: #e2e2e2;
+        }
+
+        .row {
+            display: flex;
+            margin: 10px 0;
+        }
+
+        .space {
+            width: 35px;
+        }
+
+        .item {
+            cursor: pointer;
+            border-radius: 4px;
+            transition: linear 0.1s;
+        }
+
+        .item.selected {
+            background-color: rgb(221, 188, 41);
+        }
+
+        .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 22px;
+            height: 36px;
+        }
+        
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .item.changed img {
+            display: none;
+        }
+
+        .item.changed::after {
+            content: attr(data-changed);
+            font-size: 26px;
+            color: #e9540d;
+        }
+    </style>
+</head>
+<body>
+    <div id="preview">
+        <img src="./assets/3-3/full.png" alt="" srcset="" width="1000">
+    </div>
+
+    <div id="container">
+        <div class="row">
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="14">
+                <img src="./assets/3-3/split/14.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="17">
+                <img src="./assets/3-3/split/17.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="18">
+                <img src="./assets/3-3/split/18.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="17">
+                <img src="./assets/3-3/split/17.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="19">
+                <img src="./assets/3-3/split/19.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="18">
+                <img src="./assets/3-3/split/18.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="21">
+                <img src="./assets/3-3/split/21.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="18">
+                <img src="./assets/3-3/split/18.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="18">
+                <img src="./assets/3-3/split/18.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="17">
+                <img src="./assets/3-3/split/17.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="21">
+                <img src="./assets/3-3/split/21.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="17">
+                <img src="./assets/3-3/split/17.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="18">
+                <img src="./assets/3-3/split/18.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="22">
+                <img src="./assets/3-3/split/22.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="23">
+                <img src="./assets/3-3/split/23.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="21">
+                <img src="./assets/3-3/split/21.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="23">
+                <img src="./assets/3-3/split/23.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="24">
+                <img src="./assets/3-3/split/24.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="21">
+                <img src="./assets/3-3/split/21.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="23">
+                <img src="./assets/3-3/split/23.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="5">
+                <img src="./assets/3-3/split/5.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="21">
+                <img src="./assets/3-3/split/21.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="11">
+                <img src="./assets/3-3/split/11.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+        <div class="row">
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="10">
+                <img src="./assets/3-3/split/10.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="9">
+                <img src="./assets/3-3/split/9.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="14">
+                <img src="./assets/3-3/split/14.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="1">
+                <img src="./assets/3-3/split/1.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="12">
+                <img src="./assets/3-3/split/12.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="13">
+                <img src="./assets/3-3/split/13.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="7">
+                <img src="./assets/3-3/split/7.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="4">
+                <img src="./assets/3-3/split/4.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="8">
+                <img src="./assets/3-3/split/8.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="20">
+                <img src="./assets/3-3/split/20.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="2">
+                <img src="./assets/3-3/split/2.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="3">
+                <img src="./assets/3-3/split/3.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="15">
+                <img src="./assets/3-3/split/15.png" alt="" srcset="" height="30">
+            </div>
+            <div class="space"></div>
+            <div class="item" data-id="16">
+                <img src="./assets/3-3/split/16.png" alt="" srcset="" height="30">
+            </div>
+            <div class="item" data-id="6">
+                <img src="./assets/3-3/split/6.png" alt="" srcset="" height="30">
+            </div>
+        </div>
+    </div>
+
+    <div id="menu">
+        <button type="button" value="a">a</button>
+        <button type="button" value="b">b</button>
+        <button type="button" value="c">c</button>
+        <button type="button" value="d">d</button>
+        <button type="button" value="e">e</button>
+        <button type="button" value="f">f</button>
+        <button type="button" value="g">g</button>
+        <button type="button" value="h">h</button>
+        <button type="button" value="i">i</button>
+        <button type="button" value="j">j</button>
+        <button type="button" value="k">k</button>
+        <button type="button" value="l">l</button>
+        <button type="button" value="m">m</button>
+        <button type="button" value="n">n</button>
+        <button type="button" value="o">o</button>
+        <button type="button" value="p">p</button>
+        <button type="button" value="q">q</button>
+        <button type="button" value="r">r</button>
+        <button type="button" value="s">s</button>
+        <button type="button" value="t">t</button>
+        <button type="button" value="u">u</button>
+        <button type="button" value="v">v</button>
+        <button type="button" value="w">w</button>
+        <button type="button" value="x">x</button>
+        <button type="button" value="y">y</button>
+        <button type="button" value="z">z</button>
+        <button type="button" value="">还原</button>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        function setId(id = false) {
+            $(`.item`).removeClass('selected');
+
+            if (id) {
+                $(`.item[data-id="${id}"]`)
+                    .addClass('selected changed')
+                    .attr('data-changed', id);
+            } else {
+                $(`.item[data-id="${id}"]`)
+                    .removeClass('selected changed')
+                    .removeAttr('data-changed');
+            }
+        }
+
+        $('.item').on('click', function () {
+            const id = $(this).attr('data-id');
+            const selected = $(this).hasClass('selected');
+            $(`.item`).removeClass('selected');
+
+            if (!selected) {
+                $(`.item[data-id="${id}"]`).addClass('selected')
+            }
+        })
+
+        $('#menu').on('click', 'button', function (e) {
+            const id = e.target.value;
+
+            if (id) {
+                if ($(`.item.selected`).length > 0) {
+                    $(this).prop('disabled', true);
+
+                    const letter = $(`.item.selected`).attr('data-changed');
+
+                    if (letter) {
+                        $('#menu').find(`button[value="${letter}"]`).prop('disabled', false);
+                    }
+                    
+                    $(`.item.selected`)
+                        .addClass('changed')
+                        .attr('data-changed', id);
+                }
+            } else {
+                const letter = $(`.item.selected`).attr('data-changed');
+                
+                $('#menu').find(`button[value="${letter}"]`).prop('disabled', false);
+
+                $(`.item.selected`)
+                    .removeClass('changed')
+                    .removeAttr('data-changed');
+            }
+
+            $(`.item.selected`).removeClass('selected');
+        });
+    </script>
+</body>
+</html>

@@ -1,2 +1,2 @@
 # game_cypher
-cypher game
+cypher game helper
